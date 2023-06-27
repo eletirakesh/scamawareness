@@ -1,0 +1,46 @@
+{%extends 'base.html' %}
+{% block content %}
+
+
+<div class="blog-header">
+  <div class="blog-article header-article">
+   <div class="blog-big__title">Stay Skeptical</div>
+   <div class="blog-menu small-title date">{{object.created_at|timesince}}</div>
+  </div>
+  <div class="blog-article">
+   <img src="{{object.image.url}}" alt="">
+   <h2> <span>{{object.title}}</span> </h2>
+   <div class="blog-detail">
+    <span> Posted by:{{object.author}}</span>
+    <span></span>
+    {% if can_edit %}
+    <div> 
+    <a href="{% url 'post_edit' object.pk %}">Edit</a>
+    <a href="{% url 'post_delete' object.pk %}">Delete</a>
+    </div>
+    {% endif %}
+   </div>
+   <p>{{object.description}}</p>
+   <div>
+    <a href="{%url 'comment' object.pk %}">Add comment</a>
+   </div>
+   <h5>Post comments</h5>
+   {% for comment in object.comments.all %}          
+   <p>            
+     <span class="font-weight-bold">              
+       {{ comment.author }} &middot;            
+     </span>            
+     {{ comment }}          
+   </p>        
+   {% endfor %}   
+  </div>
+  
+ 
+  
+ </div>
+
+
+ 
+ 
+
+{%endblock content %}

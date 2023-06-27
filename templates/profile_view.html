@@ -1,0 +1,30 @@
+
+{% load static %}
+
+<html>
+<head>
+    <title>Profile</title>
+    <link href="{% static 'css/profile.css' %}" rel="stylesheet"> 
+</head>
+<body>
+    <div class="profile-container">
+        <h2>Profile</h2>
+        <div class="profile-image">
+            <img src="{{ user.profile.image.url }}" alt="Profile Image">
+        </div>
+        <div class="profile-info">
+            <label>Username:&nbsp;&nbsp;{{ user.username }}</label>
+            
+        </div>
+        <div class="profile-info">
+            <label>Bio:&nbsp;&nbsp; <span>{{ user.profile.bio }}</span></label>
+            
+        </div>
+        <div class="profile-info">
+            <label>Badge:&nbsp;&nbsp; <span class="badge">{{ user.profile.badge }}</span></label>
+
+        </div>
+        <a href="{% url 'profile_update' object.pk %}"<button class="edit-button">Edit</button></a>
+    </div>
+</body>
+</html>

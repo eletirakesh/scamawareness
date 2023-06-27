@@ -1,0 +1,128 @@
+{%load static %}
+{%load log %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScamSlayers</title>
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  
+</head>
+
+
+
+<body>
+
+<div class="blog">
+  <div class="navbar">
+    <div class="menu-icon">
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+    </div>
+    <ul class="nav-items">
+      <li><a href="{% url 'home'%}">Home</a></li>
+      <li><a href="{% url 'about'%}">About</a></li>
+      <li><a href="{%url 'typesofscams'%}">Types of Scams</a></li>
+      
+      {% if user.is_authenticated %}
+      <li>Welcome,{{user.username}}</li>
+      <li><a href="{% url 'post_create' %}" class="blog-menu">Create New Post</a></li>
+      <li> <a href="{% url 'profile' user.pk%}" >Profile</a></li>
+      <li><a href="{% url 'logout' %}" class="blog-menu">Logout</a></li>
+      {% else %}
+      <li><a class="blog-menu" href="{% url 'signup' %}">Sign Up</a></li>
+      <li><a class="blog-menu" href="{% url 'login' %}">Log In</a></li>
+    {% endif %}
+
+      <li><a href="#">Contact</a></li>
+   </ul> 
+   
+    
+    
+    <div class="close-btn">X</div>
+  </div>
+  
+  
+
+  <div class="blog-part is-menu">
+   <a href="{% url 'home'%}" class="blog-menu">
+    Home
+    <svg fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right" viewBox="0 0 24 24">
+     <path d="M7 17L17 7M7 7h10v10" />
+    </svg>
+   </a>
+   <a href="{%url 'typesofscams'%}" class="blog-menu">Types of Scams</a>
+
+   {% if user.is_authenticated %}
+      <h2>Welcome,{{user.username}}</h2>
+      <a href="{% url 'post_create' %}" class="blog-menu">Create New Post</a>
+      <a href="{% url 'logout' %}" class="blog-menu">Logout</a>
+   {% else %}
+      <a class="blog-menu" href="{% url 'signup' %}">Sign Up</a>
+      <a class="blog-menu" href="{% url 'login' %}">Log In</a>
+    {% endif %}
+  {%if user.is_authenticated%}
+   <a href="{% url 'about'%}" class="blog-menu mention">About</a>
+   <a href="{% url 'profile' user.pk%}" class="blog-menu subscribe">Profile</a>
+   {%endif%}
+  </div>
+
+  <div class="blog-header-container">
+  {%block content%}
+   
+   {%endblock content%}
+  </div>
+  <div class="blog-part right-blog">
+   <marquee width="100%" direction="left">
+    <span>Protect Yourself from Scams!</span>
+    <span>Be scam-savvy in the real world too!</span>
+    <span>Arm yourself with knowledge and protect yourself from offline scams</span>
+   </marquee>
+   <div class="blog-right-title-container">
+    <div class="blog-right-title">
+     Featured Articles
+    </div>
+    <div class="blog-menu rounded">See All</div>
+   </div>
+   <div class="blog-right">
+    <div class="blog-right-container">
+     <div class="blog-title-date">
+      <div class="blog-right-page">1</div>
+      <div class="date">12.06.2021</div>
+     </div>
+     <div class="blog-right-page-title">Charles Ponzi: The Original Ponzi Scheme</div>
+     <div class="blog-right-page-subtitle">Charles Ponzi gave his name to the now notorious term “Ponzi scheme.” His massive money scam is one of the most notable in history, and yet it began with something very small and simple: postage stamps</div>
+    </div>
+    <div class="blog-right-container">
+     <div class="blog-title-date">
+      <div class="blog-right-page">2</div>
+      <div class="date">12.06.2021</div>
+     </div>
+     <div class="blog-right-page-title">Enron Scandal: The Fall  a Wall Street Darling</div>
+     <div class="blog-right-page-subtitle"><a href="https://www.investopedia.com/updates/enron-scandal-summary/">The story of Enron Corp. depicts a company that reached dramatic heights only to face a dizzying fall</div></a>
+    </div>
+    <div class="blog-right-container">
+     <div class="blog-title-date">
+      <div class="blog-right-page">3</div>
+      <div class="date">By David Marin</div>
+     </div>
+     <div class="blog-right-page-title"> The $64 Billion  Scam</div>
+     <div class="blog-right-page-subtitle">
+      <a href="https://s.yimg.com/ny/api/res/1.2/_w7vfnqVOP8RbX9tnHwvmw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY0MjtjZj13ZWJw/https://media.zenfs.com/en/gobankingrates_644/91a9ba95f20416784e646de1b1f861a5">
+        How Bernard Madoff Pulled Off The Biggest Ponzi Scheme....</div></a>
+    </div>
+    <div class="circle">
+     <div class="circle-title">Leave Your Old Life Behind</div>
+     <div class="circle-subtitle">Don't try to be like someone else, be yourself. Be secure with yourself.</div>
+     <div class="circle-footer">Explore</div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

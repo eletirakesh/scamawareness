@@ -1,0 +1,80 @@
+<!-- templates/post_delete.html -->
+
+
+{% block content %}
+  <div class="confirmation-container">
+    <h1>Are you sure?</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Delete</button>
+    </form>
+  </div>
+{% endblock content %}
+
+{% block styles %}
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+  .confirmation-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 4px solid #100e0d;
+    border-radius: 4px;
+    font-family: "Space Grotesk", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  form input[type="text"],
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    resize: vertical;
+  }
+
+  form button[type="submit"] {
+   font-family: "Space Grotesk", sans-serif;
+  padding: 10px 16px;
+  background-color: #3f3b3b;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+   
+  }
+
+  form button[type="submit"]:hover {
+    background-color: #ff3232;
+  }
+</style>
+{% endblock styles %}

@@ -1,0 +1,48 @@
+
+
+
+{%load static%}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="signup-container">
+  <h2 class="signup-title">Signup</h2>
+  <form class="signup-form" action="{% url 'signup' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_username">Username</label>
+      <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+    </div>
+    <div> 
+      <label for="id_email">Email address:</label>
+      <input type="text" name="email" class="vTextField" maxlength="254" id="id_email">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="password">Password</label>
+     <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+    </div>
+    <div class="form-group">
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+    <button type="submit">Signup</button>
+  </form>
+  <p class="error-message">{{ error_message }}</p>
+  {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+</div>
+
+  
+{% endblock %}
+
+
