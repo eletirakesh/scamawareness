@@ -29,7 +29,7 @@ class Profilepageview(DetailView):
 
 class ProfileUpdatePage(LoginRequiredMixin,UpdateView):
     model=Profile
-    fields=['profile_picture','bio',]
+    fields=['image','bio',]
     template_name='profile_update.html'
 
 
